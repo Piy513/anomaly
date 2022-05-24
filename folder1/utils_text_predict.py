@@ -1,6 +1,6 @@
 class preprossessteps_predict:
     def drop_duplicate(self,column):
-        outtext = "df_test.drop_duplicates(subset=" + str(column) + ", keep='first', inplace=True).reset_index(drop=True)"
+        outtextaaaa = "df_test.drop_duplicates(subset=" + str(column) + ", keep='first', inplace=True).reset_index(drop=True)"
         outtext += "\n    "
         outtext += "df_test.reset_index(drop=True, inplace=True)"
         return outtext
