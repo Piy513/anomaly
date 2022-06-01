@@ -1,9 +1,8 @@
-import re
 import pickle
 import pandas as pd
 from absl import app, flags
 from absl.flags import FLAGS
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 
 
 flags.DEFINE_string('input', 'train_data.csv', 'Input File Path which contains training data')
@@ -15,10 +14,10 @@ def main(_argv):
     
     df = pd.read_csv(filepath)
     
-    x_train = df[['width', 'category_id']]
-    y_train = df['width']
+    x_train = df[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']]
+    y_train = df['Species']
     
-    model = LogisticRegression(random_state=0)
+    model = RandomForestClassifier(**{'n_estimators': 100, 'criterion': 'gini', 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'auto', 'bootstrap': True, 'random_state': 42, 'class_weight': None})
     model.fit(x_train, y_train)
 
     with open(outpath, 'wb') as f:
