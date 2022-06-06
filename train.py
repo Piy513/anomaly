@@ -17,7 +17,7 @@ def main(_argv):
     x_train = df[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']]
     y_train = df['Species']
     
-    model = RandomForestClassifier(**{'n_estimators': 100, 'criterion': 'gini', 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'auto', 'bootstrap': True, 'random_state': 42, 'class_weight': None})
+    model = RandomForestClassifier(**{'n_estimators': 164, 'criterion': 'gini', 'max_depth': None, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'auto', 'bootstrap': True, 'random_state': 42, 'class_weight': None})
     model.fit(x_train, y_train)
 
     with open(outpath, 'wb') as f:
