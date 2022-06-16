@@ -16,6 +16,9 @@ def main(_argv):
         model = pickle.load(f)
     
     df_test = pd.read_csv(filepath)
+    with open('label_encoder_Species.pkl', 'rb') as f:
+        label_encoder = pickle.load(f)
+    df_test['Species_labels']= label_encoder.transform(df_test['Species'])
     
     x_test = df_test[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']]
 
